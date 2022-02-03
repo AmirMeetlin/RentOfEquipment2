@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac3918124ba34306801de636e8ce598f" Name="Diagram1" ZoomLevel="40">
+        <EntityTypeShape EntityType="DBRentEquipmentModel.Client" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBRentEquipmentModel.Employee" Width="1.5" PointX="3.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBRentEquipmentModel.Gender" Width="1.5" PointX="1.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBRentEquipmentModel.Passport" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBRentEquipmentModel.PassportClient" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBRentEquipmentModel.Product" Width="1.5" PointX="3.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBRentEquipmentModel.Rent" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBRentEquipmentModel.Role" Width="1.5" PointX="1.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBRentEquipmentModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBRentEquipmentModel.TypeProduct" Width="1.5" PointX="1.5" PointY="16.125" IsExpanded="true" />
+        <AssociationConnector Association="DBRentEquipmentModel.FK_PassportClient_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="DBRentEquipmentModel.FK_Rent_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="DBRentEquipmentModel.FK_Employee1_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="DBRentEquipmentModel.FK_Employee1_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="DBRentEquipmentModel.FK_Rent_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DBRentEquipmentModel.FK_PassportClient_Passport" ManuallyRouted="false" />
+        <AssociationConnector Association="DBRentEquipmentModel.FK_Product_TypeProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="DBRentEquipmentModel.FK_Rent_Product" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

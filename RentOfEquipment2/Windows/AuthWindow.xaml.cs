@@ -23,5 +23,30 @@ namespace RentOfEquipment2.Windows
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            var authUser = ClassHelper.AppData.Conrext.Employee.ToList().
+                Where(i => i.Login == tbLogin.Text && i.Password == tbPass.Password).FirstOrDefault();
+
+            if (string.IsNullOrWhiteSpace(tbLogin.Text))
+            {
+                MessageBox.Show("Введите логин!");
+            }
+            else if (string.IsNullOrWhiteSpace(tbPass.Password))
+            {
+                MessageBox.Show("Введите пароль!");
+            }
+            else if(authUser != null)
+            {               
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не найден");
+            }
+        }
     }
 }
