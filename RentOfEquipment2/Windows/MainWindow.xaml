@@ -14,5 +14,46 @@
             >
             Главное окно
         </TextBlock>
+        <WrapPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            >
+            <Button
+                x:Name="btnEmployee"
+                Content="Список сотрудников"
+                Width="180"
+                Height="50"
+                FontSize="16"
+                Margin="5" Click="btnEmployee_Click"
+                >
+            </Button>
+            <Button
+                x:Name="btnClient"
+                Content="Список клиентов"
+                Width="180"
+                Height="50"
+                FontSize="16"
+                Margin="5" Click="btnClient_Click"
+                >
+            </Button>
+            <Button
+                x:Name="btnEquipment"
+                Content="Список товаров"
+                Width="180"
+                Height="50"
+                FontSize="16"
+                Margin="5" Click="btnEquipment_Click"
+                >
+            </Button>
+            <Button
+                x:Name="btnRent"
+                Content="Аренда"
+                Width="180"
+                Height="50"
+                FontSize="16"
+                Margin="5"
+                >
+            </Button>
+        </WrapPanel>
     </Grid>
 </Window>

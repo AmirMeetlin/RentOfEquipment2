@@ -7,12 +7,33 @@
         mc:Ignorable="d"
         Title="EquipmentList" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
         <TextBlock
-            FontSize="15"
-            Margin=" 0 20 0 0"
+            Text="Список оборудования"
             HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="20"
+            />
+        <ListView
+            Grid.Row="2"
+            x:Name="lvEquipment"
             >
-            Список оборудования
-        </TextBlock>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Код" Width="40" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn Header="Название оборудования" Width="150" DisplayMemberBinding="{Binding Product1}"/>
+                    <GridViewColumn Header="Описание" Width="150" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Цена " Width="70" DisplayMemberBinding="{Binding Cost}"/>
+                    <GridViewColumn Header="Гарантия" Width="150" DisplayMemberBinding="{Binding Warranty}"/>
+                    <GridViewColumn Header="В аренде ли?" Width="70" DisplayMemberBinding="{Binding IsRent}"/>
+                    <GridViewColumn Header="Тип продукта" Width="150" DisplayMemberBinding="{Binding TypeProduct.TypeProduct1}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

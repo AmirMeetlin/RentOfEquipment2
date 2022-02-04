@@ -22,6 +22,7 @@ namespace RentOfEquipment2.Windows
         public ListOfClients()
         {
             InitializeComponent();
+            lvClient.ItemsSource = ClassHelper.AppData.Conrext.Client.ToList();
         }
     }
 }
