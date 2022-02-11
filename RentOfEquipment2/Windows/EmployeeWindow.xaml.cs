@@ -19,10 +19,75 @@ namespace RentOfEquipment2.Windows
     /// </summary>
     public partial class EmployeeWindow : Window
     {
+        List<string> listSort = new List<string>()
+            {
+                "По умолчанию",
+                "По фамилии",
+                "По имени",
+                "По логину",
+                "По должности"
+            };
+
         public EmployeeWindow()
         {
             InitializeComponent();
-            lvEmployee.ItemsSource = ClassHelper.AppData.Conrext.Employee.ToList();
+            Filter();
+            cbSort.ItemsSource = listSort;
+            cbSort.SelectedIndex = 0;
+        }
+        private void Filter()
+        {
+            List<EF.Employee> listEmployee = new List<EF.Employee>();
+            listEmployee = ClassHelper.AppData.Conrext.Employee.ToList();
+
+            listEmployee = listEmployee.
+                Where(i => i.SecondName.ToLower().Contains(tbSearch.Text.ToLower())
+                || i.FirstName.ToLower().Contains(tbSearch.Text.ToLower())
+                || i.Patronymic.ToLower().Contains(tbSearch.Text.ToLower())
+                || i.Login.ToLower().Contains(tbSearch.Text.ToLower())
+                || i.Phone.ToLower().Contains(tbSearch.Text.ToLower())
+                || i.FIO.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
+
+            switch(cbSort.SelectedIndex)
+            {
+                case 0:
+                    listEmployee = listEmployee.OrderBy(i => i.ID).ToList();
+                    break;
+                case 1:
+                    listEmployee = listEmployee.OrderBy(i => i.SecondName).ToList();
+                    break;
+                case 2:
+                    listEmployee = listEmployee.OrderBy(i => i.FirstName).ToList();
+                    break;
+                case 3:
+                    listEmployee = listEmployee.OrderBy(i => i.Login).ToList();
+                    break;
+                case 4:
+                    listEmployee = listEmployee.OrderBy(i => i.IDRole).ToList();
+                    break;
+                default:
+                    listEmployee = listEmployee.OrderBy(i => i.ID).ToList();
+                    break;
+            }
+
+            lvEmployee.ItemsSource = listEmployee;
+        }
+
+        private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            AddEmployee addEmployee = new AddEmployee();
+            addEmployee.ShowDialog();
+            Filter();
+        }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Filter();
         }
     }
 }
