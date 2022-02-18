@@ -89,5 +89,47 @@ namespace RentOfEquipment2.Windows
         {
             Filter();
         }
+
+        private void lvEmployee_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key==Key.Delete || e.Key==Key.Back)
+            {
+                var resClick = MessageBox.Show("Удалить пользователя?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if(resClick==MessageBoxResult.No)
+                {
+                    return;
+                }
+
+                try
+                {
+
+                    if (lvEmployee.SelectedItem is EF.Employee)
+                    {
+                        var empl = lvEmployee.SelectedItem as EF.Employee;
+
+                        ClassHelper.AppData.Conrext.Employee.Remove(empl);
+
+                        ClassHelper.AppData.Conrext.SaveChanges();
+
+                        MessageBox.Show("Пользователь успешно удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Filter();
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void lvEmployee_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var empl = lvEmployee.SelectedItem as EF.Employee;
+            AddEmployee addEmployee = new AddEmployee(empl);
+            addEmployee.ShowDialog();
+            Filter();
+
+        }
     }
 }

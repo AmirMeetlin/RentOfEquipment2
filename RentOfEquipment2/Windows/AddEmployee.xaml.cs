@@ -19,6 +19,8 @@ namespace RentOfEquipment2.Windows
     /// </summary>
     public partial class AddEmployee : Window
     {
+        bool isEdit =false;
+        EF.Employee editEmployee = new EF.Employee();
         public AddEmployee()
         {
             InitializeComponent();
@@ -28,6 +30,29 @@ namespace RentOfEquipment2.Windows
             cbRole.ItemsSource = ClassHelper.AppData.Conrext.Role.ToList();
             cbRole.DisplayMemberPath = "Role1";
             cbRole.SelectedIndex = 0;
+
+        }
+        public AddEmployee(EF.Employee employee)
+        {
+            InitializeComponent();
+            cbGender.ItemsSource = ClassHelper.AppData.Conrext.Gender.ToList();
+            cbGender.DisplayMemberPath = "Gender1";
+            cbRole.ItemsSource = ClassHelper.AppData.Conrext.Role.ToList();
+            cbRole.DisplayMemberPath = "Role1";
+
+            tbFirstName.Text = employee.FirstName;
+            tbSecondName.Text = employee.SecondName;
+            tbPatronymic.Text = employee.Patronymic;
+            tbPhone.Text= employee.Phone;
+            cbGender.SelectedIndex = employee.IDGender-1;
+            cbRole.SelectedIndex = employee.IDRole-1;
+            tbLogin.Text=employee.Login;
+            tbPassword.Password=employee.Password;
+
+            tbTitle.Text ="Изменение работников";
+
+            isEdit = true;
+            editEmployee = employee;
         }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
@@ -87,20 +112,53 @@ namespace RentOfEquipment2.Windows
                 return;
             }
 
-            EF.Employee newEmployee = new EF.Employee();
-            newEmployee.FirstName = tbFirstName.Text;
-            newEmployee.SecondName = tbSecondName.Text;
-            newEmployee.Patronymic = tbPatronymic.Text;
-            newEmployee.Phone = tbPhone.Text;
-            newEmployee.IDGender = cbGender.SelectedIndex+1;
-            newEmployee.IDRole = cbRole.SelectedIndex+1;
-            newEmployee.Login = tbLogin.Text;
-            newEmployee.Password = tbPassword.Password;
+            if (isEdit)
+            {
+                var resClick = MessageBox.Show("Изменить пользователя", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            ClassHelper.AppData.Conrext.Employee.Add(newEmployee);
-            ClassHelper.AppData.Conrext.SaveChanges();
+                if (resClick == MessageBoxResult.No)
+                {
+                    return;
+                }
 
-            this.Close();
+                editEmployee.FirstName = tbFirstName.Text;
+                editEmployee.SecondName = tbSecondName.Text;
+                editEmployee.Patronymic = tbPatronymic.Text;
+                editEmployee.Phone = tbPhone.Text;
+                editEmployee.IDGender = cbGender.SelectedIndex + 1;
+                editEmployee.IDRole = cbRole.SelectedIndex + 1;
+                editEmployee.Login = tbLogin.Text;
+                editEmployee.Password = tbPassword.Password;
+
+                ClassHelper.AppData.Conrext.SaveChanges();
+                MessageBox.Show("Пользователь изменен");
+
+                this.Close();
+            }
+            else
+            {
+                var resClick = MessageBox.Show("Добавить пользователя", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (resClick == MessageBoxResult.No)
+                {
+                    return;
+                }
+
+                EF.Employee newEmployee = new EF.Employee();
+                newEmployee.FirstName = tbFirstName.Text;
+                newEmployee.SecondName = tbSecondName.Text;
+                newEmployee.Patronymic = tbPatronymic.Text;
+                newEmployee.Phone = tbPhone.Text;
+                newEmployee.IDGender = cbGender.SelectedIndex + 1;
+                newEmployee.IDRole = cbRole.SelectedIndex + 1;
+                newEmployee.Login = tbLogin.Text;
+                newEmployee.Password = tbPassword.Password;
+
+                ClassHelper.AppData.Conrext.Employee.Add(newEmployee);
+                ClassHelper.AppData.Conrext.SaveChanges();
+
+                this.Close();
+            }
 
         }
         private void textBoxes_PreviewTextInput(object sender, TextCompositionEventArgs e)

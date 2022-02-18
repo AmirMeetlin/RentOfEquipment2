@@ -19,10 +19,68 @@ namespace RentOfEquipment2.Windows
     /// </summary>
     public partial class ListOfClients : Window
     {
+
+        List<string> listSort = new List<string>()
+            {
+                "По умолчанию",
+                "По фамилии",
+                "По имени",
+                "По дню рождения",
+                "По почте"
+            };
         public ListOfClients()
         {
             InitializeComponent();
             lvClient.ItemsSource = ClassHelper.AppData.Conrext.Client.ToList();
+            cbSort.ItemsSource = listSort;
+            cbSort.SelectedIndex = 0;
+        }
+
+        private void Filter()
+        {
+            List<EF.Client> listClient = new List<EF.Client>();
+            listClient = ClassHelper.AppData.Conrext.Client.ToList();
+
+            listClient = listClient.
+                Where(i => i.SecondName.ToLower().Contains(tbSearch.Text.ToLower())
+                || i.FirstName.ToLower().Contains(tbSearch.Text.ToLower())
+                || i.Patronymic.ToLower().Contains(tbSearch.Text.ToLower())
+                || i.Email.ToLower().Contains(tbSearch.Text.ToLower())
+                || i.Phone.ToLower().Contains(tbSearch.Text.ToLower())
+                || i.FIO.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
+
+            switch (cbSort.SelectedIndex)
+            {
+                case 0:
+                    listClient = listClient.OrderBy(i => i.ID).ToList();
+                    break;
+                case 1:
+                    listClient = listClient.OrderBy(i => i.SecondName).ToList();
+                    break;
+                case 2:
+                    listClient = listClient.OrderBy(i => i.FirstName).ToList();
+                    break;
+                case 3:
+                    listClient = listClient.OrderBy(i => i.Birthday).ToList();
+                    break;
+                case 4:
+                    listClient = listClient.OrderBy(i => i.Email).ToList();
+                    break;
+                default:
+                    listClient = listClient.OrderBy(i => i.ID).ToList();
+                    break;
+            }
+
+            lvClient.ItemsSource = listClient;
+        }
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Filter();
         }
     }
 }

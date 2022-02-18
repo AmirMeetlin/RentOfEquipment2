@@ -19,6 +19,30 @@
             VerticalAlignment="Center"
             FontSize="20"
             />
+        <WrapPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            >
+            <TextBlock
+                Text="Поиск"
+                FontSize="16"
+                Margin="10 0"/>
+            <TextBox
+                x:Name="tbSearch"
+                Width="200"
+                FontSize="16"
+                Margin="10 0" TextChanged="tbSearch_TextChanged"
+                />
+            <ComboBox
+                x:Name="cbSort"
+                Width="200"
+                FontSize="16"
+                Margin="10 0"
+                SelectionChanged="cbSort_SelectionChanged"
+                />
+
+        </WrapPanel>
         <ListView
             Grid.Row="2"
             x:Name="lvClient"

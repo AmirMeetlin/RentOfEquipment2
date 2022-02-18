@@ -103,6 +103,8 @@
         <ListView
             Grid.Row="2"
             x:Name="lvEmployee"
+            KeyDown="lvEmployee_KeyDown"
+            MouseDoubleClick="lvEmployee_MouseDoubleClick"
             >
             <ListView.View>
                 <GridView>
