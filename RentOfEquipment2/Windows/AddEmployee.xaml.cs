@@ -96,11 +96,6 @@ namespace RentOfEquipment2.Windows
                 MessageBox.Show("Поле ПОВТОРЕНИЕ ПАРОЛЯ не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (!Int64.TryParse(tbPhone.Text, out long res))
-            {
-                MessageBox.Show("Введены недопустимые символы в поле НОМЕР ТЕЛЕФОНА", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
             if(tbPassword.Password!=tbRepeatPaswword.Password)
             {
                 MessageBox.Show("Пароли не совпадают", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);

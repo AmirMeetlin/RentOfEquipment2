@@ -82,5 +82,11 @@ namespace RentOfEquipment2.Windows
         {
             Filter();
         }
+        private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            AddClient addClient = new AddClient();
+            addClient.ShowDialog();
+            Filter();
+        }
     }
 }
