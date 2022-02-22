@@ -61,11 +61,38 @@ namespace RentOfEquipment2.Windows
                 MessageBox.Show("Поле ДАТА РОЖДЕНИЯ не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(tbMail.Password))
+            if (string.IsNullOrWhiteSpace(tbMail.Text))
             {
                 MessageBox.Show("Поле ПОЧТА не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if (string.IsNullOrWhiteSpace(tbSerial.Text))
+            {
+                MessageBox.Show("Поле СЕРИЯ ПАСПОРТА не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(tbNumber.Text))
+            {
+                MessageBox.Show("Поле НОМЕР ПАСПОРТА не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var resClick = MessageBox.Show("Добавить пользователя", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (resClick == MessageBoxResult.No)
+            {
+                return;
+            }
+            EF.Client newClient = new EF.Client();
+            EF.Passport newPassport = new EF.Passport();
+            newClient.FirstName = tbFirstName.Text;
+            newClient.SecondName = tbSecondName.Text;
+            newClient.Patronymic = tbPatronymic.Text;
+            newClient.Birthday = Convert.ToDateTime(tbBirthday.Text);
+            newClient.Email = tbMail.Text;
+            newPassport.PassportSeries = tbSerial.Text;
+            newPassport.PassportNumber = tbNumber.Text;
+            
         }
 
     }
