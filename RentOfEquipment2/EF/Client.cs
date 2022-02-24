@@ -29,6 +29,7 @@ namespace RentOfEquipment2.EF
         public string Email { get; set; }
         public int IDGender { get; set; }
         public System.DateTime Birthday { get; set; }
+        public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PassportClient> PassportClient { get; set; }

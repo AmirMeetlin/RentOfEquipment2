@@ -17,6 +17,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="IDGender" Type="int" Nullable="false" />
           <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -31,6 +32,7 @@
           <Property Name="IDRole" Type="int" Nullable="false" />
           <Property Name="Phone" Type="char" MaxLength="12" Nullable="false" />
           <Property Name="IDGender" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -66,6 +68,7 @@
           <Property Name="IDTypeProduct" Type="int" Nullable="false" />
           <Property Name="Warranty" Type="date" Nullable="false" />
           <Property Name="IsRent" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Rent">
           <Key>
@@ -77,6 +80,7 @@
           <Property Name="IDEmployee" Type="int" Nullable="false" />
           <Property Name="TimeRent" Type="datetime" Nullable="false" />
           <Property Name="TimeRentEnd" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -364,6 +368,7 @@
           <Property Name="Email" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="IDGender" Type="Int32" Nullable="false" />
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="PassportClient" Relationship="DBRentEquipmentModel.FK_PassportClient_Client" FromRole="Client" ToRole="PassportClient" />
           <NavigationProperty Name="Rent" Relationship="DBRentEquipmentModel.FK_Rent_Client" FromRole="Client" ToRole="Rent" />
         </EntityType>
@@ -380,6 +385,7 @@
           <Property Name="IDRole" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
           <Property Name="IDGender" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Gender" Relationship="DBRentEquipmentModel.FK_Employee1_Gender" FromRole="Employee" ToRole="Gender" />
           <NavigationProperty Name="Role" Relationship="DBRentEquipmentModel.FK_Employee1_Role" FromRole="Employee" ToRole="Role" />
           <NavigationProperty Name="Rent" Relationship="DBRentEquipmentModel.FK_Rent_Employee" FromRole="Employee" ToRole="Rent" />
@@ -422,6 +428,7 @@
           <Property Name="IDTypeProduct" Type="Int32" Nullable="false" />
           <Property Name="Warranty" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="IsRent" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TypeProduct" Relationship="DBRentEquipmentModel.FK_Product_TypeProduct" FromRole="Product" ToRole="TypeProduct" />
           <NavigationProperty Name="Rent" Relationship="DBRentEquipmentModel.FK_Rent_Product" FromRole="Product" ToRole="Rent" />
         </EntityType>
@@ -435,6 +442,7 @@
           <Property Name="IDEmployee" Type="Int32" Nullable="false" />
           <Property Name="TimeRent" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TimeRentEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="DBRentEquipmentModel.FK_Rent_Client" FromRole="Rent" ToRole="Client" />
           <NavigationProperty Name="Employee" Relationship="DBRentEquipmentModel.FK_Rent_Employee" FromRole="Rent" ToRole="Employee" />
           <NavigationProperty Name="Product" Relationship="DBRentEquipmentModel.FK_Rent_Product" FromRole="Rent" ToRole="Product" />
@@ -578,6 +586,7 @@
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="DBRentEquipmentModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="IDGender" ColumnName="IDGender" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -592,6 +601,7 @@
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="DBRentEquipmentModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="IDGender" ColumnName="IDGender" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="IDRole" ColumnName="IDRole" />
@@ -633,6 +643,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="DBRentEquipmentModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="IsRent" ColumnName="IsRent" />
                 <ScalarProperty Name="Warranty" ColumnName="Warranty" />
                 <ScalarProperty Name="IDTypeProduct" ColumnName="IDTypeProduct" />
@@ -646,6 +657,7 @@
           <EntitySetMapping Name="Rent">
             <EntityTypeMapping TypeName="DBRentEquipmentModel.Rent">
               <MappingFragment StoreEntitySet="Rent">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="TimeRentEnd" ColumnName="TimeRentEnd" />
                 <ScalarProperty Name="TimeRent" ColumnName="TimeRent" />
                 <ScalarProperty Name="IDEmployee" ColumnName="IDEmployee" />

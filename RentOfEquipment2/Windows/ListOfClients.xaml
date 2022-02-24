@@ -45,7 +45,7 @@
         </WrapPanel>
         <ListView
             Grid.Row="2"
-            x:Name="lvClient"
+            x:Name="lvClient" KeyDown="lvClient_KeyDown"
             >
             <ListView.View>
                 <GridView>

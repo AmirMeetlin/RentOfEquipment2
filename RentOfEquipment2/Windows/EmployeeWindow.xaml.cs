@@ -38,7 +38,7 @@ namespace RentOfEquipment2.Windows
         private void Filter()
         {
             List<EF.Employee> listEmployee = new List<EF.Employee>();
-            listEmployee = ClassHelper.AppData.Conrext.Employee.ToList();
+            listEmployee = ClassHelper.AppData.Conrext.Employee.Where(i=>i.IsDeleted==false).ToList();
 
             listEmployee = listEmployee.
                 Where(i => i.SecondName.ToLower().Contains(tbSearch.Text.ToLower())
@@ -100,15 +100,13 @@ namespace RentOfEquipment2.Windows
                 {
                     return;
                 }
-
                 try
                 {
-
                     if (lvEmployee.SelectedItem is EF.Employee)
                     {
                         var empl = lvEmployee.SelectedItem as EF.Employee;
 
-                        ClassHelper.AppData.Conrext.Employee.Remove(empl);
+                        empl.IsDeleted = true;
 
                         ClassHelper.AppData.Conrext.SaveChanges();
 

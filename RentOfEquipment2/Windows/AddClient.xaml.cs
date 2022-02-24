@@ -22,6 +22,9 @@ namespace RentOfEquipment2.Windows
         public AddClient()
         {
             InitializeComponent();
+            cbGender.ItemsSource = ClassHelper.AppData.Conrext.Gender.ToList();
+            cbGender.DisplayMemberPath = "Gender1";
+            cbGender.SelectedIndex = 0;
         }
         private void textBoxes_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -85,15 +88,27 @@ namespace RentOfEquipment2.Windows
             }
             EF.Client newClient = new EF.Client();
             EF.Passport newPassport = new EF.Passport();
+            EF.PassportClient newPassportClient = new EF.PassportClient();
             newClient.FirstName = tbFirstName.Text;
             newClient.SecondName = tbSecondName.Text;
             newClient.Patronymic = tbPatronymic.Text;
             newClient.Birthday = Convert.ToDateTime(tbBirthday.Text);
             newClient.Email = tbMail.Text;
+            newClient.IDGender = cbGender.SelectedIndex + 1;
+            newClient.Phone = tbPhone.Text;
+            ClassHelper.AppData.Conrext.Client.Add(newClient);
+            ClassHelper.AppData.Conrext.SaveChanges();
             newPassport.PassportSeries = tbSerial.Text;
             newPassport.PassportNumber = tbNumber.Text;
-            
-        }
+            ClassHelper.AppData.Conrext.Passport.Add(newPassport);
+            ClassHelper.AppData.Conrext.SaveChanges();
+            newPassportClient.IDPassport = newPassport.ID;
+            newPassportClient.IDClient = newClient.ID;
 
+            ClassHelper.AppData.Conrext.PassportClient.Add(newPassportClient);
+            ClassHelper.AppData.Conrext.SaveChanges();
+
+            this.Close();
+        }    
     }
 }

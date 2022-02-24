@@ -39,7 +39,7 @@ namespace RentOfEquipment2.Windows
         private void Filter()
         {
             List<EF.Client> listClient = new List<EF.Client>();
-            listClient = ClassHelper.AppData.Conrext.Client.ToList();
+            listClient = ClassHelper.AppData.Conrext.Client.Where(i => i.IsDeleted==false).ToList();
 
             listClient = listClient.
                 Where(i => i.SecondName.ToLower().Contains(tbSearch.Text.ToLower())
@@ -87,6 +87,37 @@ namespace RentOfEquipment2.Windows
             AddClient addClient = new AddClient();
             addClient.ShowDialog();
             Filter();
+        }
+
+        private void lvClient_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete || e.Key == Key.Back)
+            {
+                var resClick = MessageBox.Show("Удалить пользователя?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (resClick == MessageBoxResult.No)
+                {
+                    return;
+                }
+                try
+                {
+                    if (lvClient.SelectedItem is EF.Client)
+                    {
+                        var empl = lvClient.SelectedItem as EF.Client;
+
+                        empl.IsDeleted = true;
+
+                        ClassHelper.AppData.Conrext.SaveChanges();
+
+                        MessageBox.Show("Пользователь успешно удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Filter();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }
