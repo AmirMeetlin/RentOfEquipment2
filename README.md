@@ -1,6 +1,4 @@
 <h1>Очень важный файл</h1>
-![screen-gif](https://c.tenor.com/k1wbOgEPazIAAAAd/the-rock-sus-meme-the-rock-sus.gif)
-<img src="https://c.tenor.com/k1wbOgEPazIAAAAd/the-rock-sus-meme-the-rock-sus.gif">
 <p>ссылочки на окна:</p>
 <ul>
   <li><a href="#link-auth">авторизация</a></li>
