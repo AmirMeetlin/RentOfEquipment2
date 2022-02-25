@@ -1,4 +1,7 @@
 <h1>Очень важный файл</h1>
+<marquee behavior="alternate" direction="left" bgcolor="#ffcc00">
+  Lorem ipsum dolor sit amet...
+</marquee>
 <p>ссылочки на окна:</p>
 <ul>
   <li><a href="#link-auth">авторизация</a></li>
