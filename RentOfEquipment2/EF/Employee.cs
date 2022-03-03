@@ -30,6 +30,7 @@ namespace RentOfEquipment2.EF
         public string Phone { get; set; }
         public int IDGender { get; set; }
         public bool IsDeleted { get; set; }
+        public string Photo { get; set; }
     
         public virtual Gender Gender { get; set; }
         public virtual Role Role { get; set; }
