@@ -32,6 +32,8 @@
 
 <br>
 <br>
+<br>
+<br>
 
 >ошибка авторизации
 
@@ -40,6 +42,8 @@
 
 <img id="link-auth-fail" src="https://user-images.githubusercontent.com/81183605/155686307-f164282e-af54-45a8-81bf-28583ff910bc.png">
 
+<br>
+<br>
 <br>
 <br>
 
@@ -52,6 +56,8 @@
 
 <br>
 <br>
+<br>
+<br>
 
 >список работников
 
@@ -60,6 +66,8 @@
 
 <img id="link-employee" src="https://user-images.githubusercontent.com/81183605/155686653-3b20d4e0-563e-41e4-8652-61dfa022ccb1.png">
 
+<br>
+<br>
 <br>
 <br>
 
@@ -72,6 +80,8 @@
 
 <br>
 <br>
+<br>
+<br>
 
 >фильтрация работников
 
@@ -80,6 +90,8 @@
 
 <img id="link-employee-filter" src="https://user-images.githubusercontent.com/81183605/155691773-3750b43d-ccad-43a4-8d0c-834668d43630.png">
 
+<br>
+<br>
 <br>
 <br>
 
@@ -93,6 +105,8 @@
 
 <br>
 <br>
+<br>
+<br>
 
 >вапавпав
 
@@ -100,6 +114,10 @@
 <br>
 
 <img id="link-" src="">
+<br>
+<br>
+<br>
+<br>
 
 
 
