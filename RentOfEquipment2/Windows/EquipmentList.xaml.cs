@@ -37,7 +37,7 @@ namespace RentOfEquipment2.Windows
         private void Filter()
         {
             List<EF.Product> listClient = new List<EF.Product>();
-            listClient = ClassHelper.AppData.Conrext.Product.ToList();
+            listClient = ClassHelper.AppData.Conrext.Product.Where(i => i.IsDeleted == false).ToList();
 
             listClient = listClient.
                 Where(i => i.Product1.ToLower().Contains(tbSearch.Text.ToLower())
@@ -76,6 +76,52 @@ namespace RentOfEquipment2.Windows
         private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Filter();
+        }
+
+        private void btnAddEquipment_Click(object sender, RoutedEventArgs e)
+        {
+            AddEquipment addEquipment = new AddEquipment();
+            addEquipment.ShowDialog();
+            Filter();
+        }
+
+        private void lvEquipment_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var equipment = lvEquipment.SelectedItem as EF.Product;
+            AddEquipment addEquipment = new AddEquipment(equipment);
+            addEquipment.ShowDialog();
+            Filter();
+        }
+
+        private void lvEquipment_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete || e.Key == Key.Back)
+            {
+                var resClick = MessageBox.Show("Удалить товар?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (resClick == MessageBoxResult.No)
+                {
+                    return;
+                }
+                try
+                {
+                    if (lvEquipment.SelectedItem is EF.Product)
+                    {
+                        var equip = lvEquipment.SelectedItem as EF.Product;
+
+                        equip.IsDeleted = true;
+
+                        ClassHelper.AppData.Conrext.SaveChanges();
+
+                        MessageBox.Show("Товар успешно удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Filter();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

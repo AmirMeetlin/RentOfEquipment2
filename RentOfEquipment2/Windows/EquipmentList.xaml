@@ -47,7 +47,7 @@
             Grid.Row="2"
             x:Name="lvEquipment"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-            HorizontalContentAlignment="Center"
+            HorizontalContentAlignment="Center" MouseDoubleClick="lvEquipment_MouseDoubleClick" KeyDown="lvEquipment_KeyDown"
             >
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -207,5 +207,17 @@
                 </GridView>
             </ListView.View>-->
         </ListView>
+        <Button x:Name="btnAddEquipment"
+                Grid.Row="3"
+                Width="40"
+                Height="40"
+                Content="+"
+                FontSize="30" 
+                Style="{DynamicResource ButtonAddStyle}"
+                HorizontalAlignment="Right"
+                Margin="0 0 30 0" Click="btnAddEquipment_Click"
+
+                >
+        </Button>
     </Grid>
 </Window>
