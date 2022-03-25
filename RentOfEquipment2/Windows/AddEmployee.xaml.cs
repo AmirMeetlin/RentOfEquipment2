@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +21,10 @@ namespace RentOfEquipment2.Windows
     /// </summary>
     public partial class AddEmployee : Window
     {
-        bool isEdit =false;
+        bool isEdit = false;
         EF.Employee editEmployee = new EF.Employee();
+        string Login;
+        string pathPhoto = null;
         public AddEmployee()
         {
             InitializeComponent();
@@ -43,13 +47,30 @@ namespace RentOfEquipment2.Windows
             tbFirstName.Text = employee.FirstName;
             tbSecondName.Text = employee.SecondName;
             tbPatronymic.Text = employee.Patronymic;
-            tbPhone.Text= employee.Phone;
-            cbGender.SelectedIndex = employee.IDGender-1;
-            cbRole.SelectedIndex = employee.IDRole-1;
-            tbLogin.Text=employee.Login;
-            tbPassword.Password=employee.Password;
+            tbPhone.Text = employee.Phone;
+            cbGender.SelectedIndex = employee.IDGender - 1;
+            cbRole.SelectedIndex = employee.IDRole - 1;
+            tbLogin.Text = employee.Login;
+            Login = employee.Login;
+            tbPassword.Password = employee.Password;
 
-            tbTitle.Text ="Изменение работников";
+            if (employee.Photo != null)
+            {
+                using (MemoryStream stream = new MemoryStream(employee.Photo))
+                {
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                    bitmapImage.StreamSource = stream;
+                    bitmapImage.EndInit();
+
+                    photoUser.Source = bitmapImage;
+                }
+
+            }
+
+            tbTitle.Text = "Изменение работников";
 
             isEdit = true;
             editEmployee = employee;
@@ -59,11 +80,11 @@ namespace RentOfEquipment2.Windows
         {
 
             var authUser = ClassHelper.AppData.Conrext.Employee.ToList().
-                Where(i => i.Login == tbLogin.Text).FirstOrDefault();
+                Where(i => i.Login == tbLogin.Text & i.Login!=Login).FirstOrDefault();
 
             if (string.IsNullOrWhiteSpace(tbFirstName.Text))
             {
-                MessageBox.Show("Поле ИМЯ не должно быть пустым","Ошибка",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("Поле ИМЯ не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (string.IsNullOrWhiteSpace(tbSecondName.Text))
@@ -96,12 +117,12 @@ namespace RentOfEquipment2.Windows
                 MessageBox.Show("Поле ПОВТОРЕНИЕ ПАРОЛЯ не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if(tbPassword.Password!=tbRepeatPaswword.Password)
+            if (tbPassword.Password != tbRepeatPaswword.Password)
             {
                 MessageBox.Show("Пароли не совпадают", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (authUser!=null)
+            if (authUser != null)
             {
                 MessageBox.Show("Пользователь с данным ЛОГИНОМ уже существует", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -124,6 +145,11 @@ namespace RentOfEquipment2.Windows
                 editEmployee.IDRole = cbRole.SelectedIndex + 1;
                 editEmployee.Login = tbLogin.Text;
                 editEmployee.Password = tbPassword.Password;
+
+                if (pathPhoto != null)
+                {
+                    editEmployee.Photo = File.ReadAllBytes(pathPhoto);
+                }
 
                 ClassHelper.AppData.Conrext.SaveChanges();
                 MessageBox.Show("Пользователь изменен");
@@ -149,7 +175,13 @@ namespace RentOfEquipment2.Windows
                 newEmployee.Login = tbLogin.Text;
                 newEmployee.Password = tbPassword.Password;
 
+                if (pathPhoto != null)
+                {
+                    editEmployee.Photo = File.ReadAllBytes(pathPhoto);
+                }
+
                 ClassHelper.AppData.Conrext.Employee.Add(newEmployee);
+
                 ClassHelper.AppData.Conrext.SaveChanges();
 
                 this.Close();
@@ -167,6 +199,16 @@ namespace RentOfEquipment2.Windows
         private void tbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !(Char.IsDigit(e.Text, 0));
+        }
+
+        private void btnChoosePhoto_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == true)
+            {
+                photoUser.Source = new BitmapImage(new Uri(openFile.FileName));
+                pathPhoto = openFile.FileName;
+            }
         }
     }
 }

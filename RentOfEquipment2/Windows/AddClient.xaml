@@ -94,6 +94,7 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Margin="0 0 10 0"
+            x:Name="tblSerial"
             >
             Серия паспорта :
         </TextBlock>
@@ -103,6 +104,7 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Margin="0 0 10 0"
+            x:Name="tblNumber"
             >
             Номер паспорта :
         </TextBlock>

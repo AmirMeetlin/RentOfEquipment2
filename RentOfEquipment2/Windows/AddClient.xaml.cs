@@ -19,12 +19,45 @@ namespace RentOfEquipment2.Windows
     /// </summary>
     public partial class AddClient : Window
     {
+
+        bool isEdit = false;
+        EF.Client editClient = new EF.Client();
+        string Login;
+        string pathPhoto = null;
         public AddClient()
         {
             InitializeComponent();
             cbGender.ItemsSource = ClassHelper.AppData.Conrext.Gender.ToList();
             cbGender.DisplayMemberPath = "Gender1";
             cbGender.SelectedIndex = 0;
+        }
+        public AddClient(EF.Client client)
+        {
+            EF.Passport Passport = new EF.Passport();
+            EF.PassportClient PassportClient = new EF.PassportClient();
+
+            InitializeComponent();
+            cbGender.ItemsSource = ClassHelper.AppData.Conrext.Gender.ToList();
+            cbGender.DisplayMemberPath = "Gender1";
+
+            tbFirstName.Text = client.FirstName;
+            tbSecondName.Text = client.SecondName;
+            tbPatronymic.Text = client.Patronymic;
+            tbPhone.Text = client.Phone;
+            tbBirthday.Text =Convert.ToString(client.Birthday);
+            tbMail.Text = client.Email;
+            cbGender.SelectedIndex = client.IDGender - 1;
+
+
+
+
+            tbTitle.Text = "Изменение сотрудника";
+            isEdit = true;
+            editClient = client;
+            tbSerial.Visibility = Visibility.Hidden;
+            tbNumber.Visibility = Visibility.Hidden;
+            tblNumber.Visibility = Visibility.Hidden;
+            tblSerial.Visibility = Visibility.Hidden;
         }
         private void textBoxes_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -69,46 +102,71 @@ namespace RentOfEquipment2.Windows
                 MessageBox.Show("Поле ПОЧТА не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(tbSerial.Text))
+            if (string.IsNullOrWhiteSpace(tbSerial.Text) && isEdit==false)
             {
                 MessageBox.Show("Поле СЕРИЯ ПАСПОРТА не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(tbNumber.Text))
+            if (string.IsNullOrWhiteSpace(tbNumber.Text) && isEdit==false)
             {
                 MessageBox.Show("Поле НОМЕР ПАСПОРТА не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            var resClick = MessageBox.Show("Добавить пользователя", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (resClick == MessageBoxResult.No)
+            if(isEdit)
             {
-                return;
+                var resClick = MessageBox.Show("Изменить клиента", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (resClick == MessageBoxResult.No)
+                {
+                    return;
+                }
+                editClient.FirstName = tbFirstName.Text;
+                editClient.SecondName = tbSecondName.Text;
+                editClient.Patronymic = tbPatronymic.Text;
+                editClient.Birthday = Convert.ToDateTime(tbBirthday.Text);
+                editClient.Email = tbMail.Text;
+                editClient.IDGender = cbGender.SelectedIndex + 1;
+                editClient.Phone = tbPhone.Text;
+
+
+                ClassHelper.AppData.Conrext.SaveChanges();
+                MessageBox.Show("Клиент изменен");
+                this.Close();
             }
-            EF.Client newClient = new EF.Client();
-            EF.Passport newPassport = new EF.Passport();
-            EF.PassportClient newPassportClient = new EF.PassportClient();
-            newClient.FirstName = tbFirstName.Text;
-            newClient.SecondName = tbSecondName.Text;
-            newClient.Patronymic = tbPatronymic.Text;
-            newClient.Birthday = Convert.ToDateTime(tbBirthday.Text);
-            newClient.Email = tbMail.Text;
-            newClient.IDGender = cbGender.SelectedIndex + 1;
-            newClient.Phone = tbPhone.Text;
-            ClassHelper.AppData.Conrext.Client.Add(newClient);
-            ClassHelper.AppData.Conrext.SaveChanges();
-            newPassport.PassportSeries = tbSerial.Text;
-            newPassport.PassportNumber = tbNumber.Text;
-            ClassHelper.AppData.Conrext.Passport.Add(newPassport);
-            ClassHelper.AppData.Conrext.SaveChanges();
-            newPassportClient.IDPassport = newPassport.ID;
-            newPassportClient.IDClient = newClient.ID;
+            else
+            {
+                var resClick = MessageBox.Show("Добавить пользователя", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            ClassHelper.AppData.Conrext.PassportClient.Add(newPassportClient);
-            ClassHelper.AppData.Conrext.SaveChanges();
+                if (resClick == MessageBoxResult.No)
+                {
+                    return;
+                }
+                EF.Client newClient = new EF.Client();
+                EF.Passport newPassport = new EF.Passport();
+                EF.PassportClient newPassportClient = new EF.PassportClient();
+                newClient.FirstName = tbFirstName.Text;
+                newClient.SecondName = tbSecondName.Text;
+                newClient.Patronymic = tbPatronymic.Text;
+                newClient.Birthday = Convert.ToDateTime(tbBirthday.Text);
+                newClient.Email = tbMail.Text;
+                newClient.IDGender = cbGender.SelectedIndex + 1;
+                newClient.Phone = tbPhone.Text;
+                ClassHelper.AppData.Conrext.Client.Add(newClient);
+                ClassHelper.AppData.Conrext.SaveChanges();
+                newPassport.PassportSeries = tbSerial.Text;
+                newPassport.PassportNumber = tbNumber.Text;
+                ClassHelper.AppData.Conrext.Passport.Add(newPassport);
+                ClassHelper.AppData.Conrext.SaveChanges();
+                newPassportClient.IDPassport = newPassport.ID;
+                newPassportClient.IDClient = newClient.ID;
 
-            this.Close();
+                ClassHelper.AppData.Conrext.PassportClient.Add(newPassportClient);
+                ClassHelper.AppData.Conrext.SaveChanges();
+                MessageBox.Show("Клиент добавлен");
+                this.Close();
+            }
+            
         }    
     }
 }

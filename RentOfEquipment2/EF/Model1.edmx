@@ -33,7 +33,7 @@
           <Property Name="Phone" Type="char" MaxLength="12" Nullable="false" />
           <Property Name="IDGender" Type="int" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
-          <Property Name="Photo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -387,7 +387,7 @@
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
           <Property Name="IDGender" Type="Int32" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="Photo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Gender" Relationship="DBRentEquipmentModel.FK_Employee1_Gender" FromRole="Employee" ToRole="Gender" />
           <NavigationProperty Name="Role" Relationship="DBRentEquipmentModel.FK_Employee1_Role" FromRole="Employee" ToRole="Role" />
           <NavigationProperty Name="Rent" Relationship="DBRentEquipmentModel.FK_Rent_Employee" FromRole="Employee" ToRole="Rent" />

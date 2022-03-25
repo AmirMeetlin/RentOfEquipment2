@@ -119,5 +119,13 @@ namespace RentOfEquipment2.Windows
                 }
             }
         }
+
+        private void lvClient_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var client = lvClient.SelectedItem as EF.Client;
+            AddClient addClient = new AddClient(client);
+            addClient.ShowDialog();
+            Filter();
+        }
     }
 }

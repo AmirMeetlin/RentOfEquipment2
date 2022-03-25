@@ -146,6 +146,54 @@
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
+                            <TextBlock
+                    Grid.Column="3"
+                    Grid.Row="0"
+                    Text="Должность : "
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    ></TextBlock>
+                            <TextBlock
+                    Grid.Column="3"
+                    Grid.Row="1"
+                    Text="Телефон : "
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    ></TextBlock>
+                            <TextBlock
+                    Grid.Column="3"
+                    Grid.Row="2"
+                    Text="Логин : "
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    ></TextBlock>
+                            <TextBlock
+                    Grid.Column="4"
+                    Grid.Row="0"
+                    Text="{Binding Role.Role1}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    ></TextBlock>
+                            <TextBlock
+                    Grid.Column="4"
+                    Grid.Row="1"
+                    Text="{Binding Phone}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    ></TextBlock>
+                            <TextBlock
+                    Grid.Column="4"
+                    Grid.Row="2"
+                    Text="{Binding Login}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    ></TextBlock>
                         </Grid>
                     </Border>
                 </DataTemplate>
