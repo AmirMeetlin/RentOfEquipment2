@@ -51,7 +51,7 @@
                 Width="180"
                 Height="50"
                 FontSize="16"
-                Margin="5"
+                Margin="5" Click="btnRent_Click"
                 >
             </Button>
         </WrapPanel>

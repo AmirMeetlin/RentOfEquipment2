@@ -120,6 +120,9 @@
     <Compile Include="Windows\AddEquipment.xaml.cs">
       <DependentUpon>AddEquipment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AddRent.xaml.cs">
+      <DependentUpon>AddRent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,9 @@
     </Compile>
     <Compile Include="Windows\OutputOfEquipment.xaml.cs">
       <DependentUpon>OutputOfEquipment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\rentWindow.xaml.cs">
+      <DependentUpon>rentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ReturnOfEquipment.xaml.cs">
       <DependentUpon>ReturnOfEquipment.xaml</DependentUpon>
@@ -144,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AddEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddRent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -182,6 +192,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\OutputOfEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\rentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

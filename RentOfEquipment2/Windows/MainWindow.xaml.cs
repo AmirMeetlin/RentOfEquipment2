@@ -49,5 +49,13 @@ namespace RentOfEquipment2
             equipmentList.ShowDialog();
             this.Show();
         }
+
+        private void btnRent_Click(object sender, RoutedEventArgs e)
+        {
+            rentWindow rentWindow = new rentWindow();
+            this.Hide();
+            rentWindow.ShowDialog();
+            this.Show();
+        }
     }
 }
