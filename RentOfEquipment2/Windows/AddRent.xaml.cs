@@ -45,7 +45,60 @@ namespace RentOfEquipment2.Windows
 
         private void btnChooseEquipment_Click(object sender, RoutedEventArgs e)
         {
+            ChooseEquipment chooseEquipment = new ChooseEquipment();
+            chooseEquipment.ShowDialog();
+            btnChooseEquipment.FontSize = 15;
+            btnChooseEquipment.Content = GetEquipment.Product1;
 
+            if(dpBegin.SelectedDate!= null && dpEnd.SelectedDate!= null && GetEquipment != null)
+            {
+                int NumberOfDayOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
+                int NumberOfDayOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
+                tbCost.Text = (GetEquipment.Cost * (NumberOfDayOfEnd - NumberOfDayOfBegin + 1)).ToString();
+            }
+            
+        }
+
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+            var resClick = MessageBox.Show("Добавить запись?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (resClick == MessageBoxResult.No)
+            {
+                return;
+            }
+
+            EF.Rent rent = new EF.Rent();
+            rent.IDClient = GetClient.ID;
+            rent.IDEmployee = GetEmployee.ID;
+            rent.IDProduct = GetEquipment.ID;
+            rent.TimeRent =Convert.ToDateTime(dpBegin.SelectedDate);
+            rent.TimeRentEnd =Convert.ToDateTime(dpEnd.SelectedDate);
+            rent.TotalCost = Convert.ToDecimal(tbCost.Text);
+            ClassHelper.AppData.Conrext.Rent.Add(rent);
+            ClassHelper.AppData.Conrext.SaveChanges();
+            MessageBox.Show("Запись об аренде успешно добавлена!");
+            this.Close();
+        }
+
+        private void dpEnd_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dpBegin.SelectedDate != null && dpEnd.SelectedDate != null && GetEquipment!=null)
+            {
+                int NumberOfDayOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
+                int NumberOfDayOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
+                tbCost.Text = (GetEquipment.Cost * (NumberOfDayOfEnd - NumberOfDayOfBegin + 1)).ToString();
+            }
+        }
+
+        private void dpBegin_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dpBegin.SelectedDate != null && dpEnd.SelectedDate != null && GetEquipment != null)
+            {
+                int NumberOfDayOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
+                int NumberOfDayOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
+                tbCost.Text = (GetEquipment.Cost * (NumberOfDayOfEnd - NumberOfDayOfBegin + 1)).ToString();
+            }
         }
     }
 }

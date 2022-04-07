@@ -46,8 +46,10 @@
         <ListView
             Grid.Row="2"
             x:Name="lvRent"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            HorizontalContentAlignment="Center" 
             >
-            <!--<ListView.ItemsPanel>
+            <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel/>
                 </ItemsPanelTemplate>
@@ -61,139 +63,138 @@
             BorderBrush="White"
             CornerRadius="10"
             Background="White"
-            Margin="0 10 5 0"
-                        
             >
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="10" Opacity="0.16"/>
-                        </Border.Effect>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                            </Grid.ColumnDefinitions>
-                            <Image
-                                Grid.RowSpan="3"
-                                x:Name="photoEmpl"
-                                Margin="10"                                
-                                >
-                                <Image.Source>
-                                    <Binding Path="Photo">
-                                        <Binding.TargetNullValue>
-                                            <ImageSource>/Photo/profile.png</ImageSource>
-                                        </Binding.TargetNullValue>
-                                    </Binding>
-                                </Image.Source>
-                            </Image>
-                            <TextBlock
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Opacity="0.16"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Image
+                    x:Name="photoEmpl"
+                    Margin="10"
+                    Grid.RowSpan="3"
+                    >
+                    <Image.Source>
+                        <Binding Path="Photo">
+                            <Binding.TargetNullValue>
+                                <ImageSource>C:\Users\IMac2\Source\Repos\RentOfEquipment2\RentOfEquipment2\Photo\profile.png</ImageSource>
+                            </Binding.TargetNullValue>
+                        </Binding>
+                    </Image.Source>
+                </Image>
+                <TextBlock
                     Grid.Column="1"
                     Grid.Row="0"
-                    Text="Фамилия : "
+                    Text="Фамилия клиента : "
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                            <TextBlock
+                <TextBlock
                     Grid.Column="1"
                     Grid.Row="1"
-                    Text="Имя : "
+                    Text="Фамилия сотрудника : "
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                            <TextBlock
+                <TextBlock
                     Grid.Column="1"
                     Grid.Row="2"
-                    Text="Отчество : "
+                    Text="Оборудование : "
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                            <TextBlock
+                <TextBlock
                     Grid.Column="2"
                     Grid.Row="0"
-                    Text="{Binding SecondName}"
+                    Text="{Binding Client.SecondName}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                            <TextBlock
+                <TextBlock
                     Grid.Column="2"
                     Grid.Row="1"
-                    Text="{Binding FirstName}"
+                    Text="{Binding Employee.SecondName}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                            <TextBlock
+                <TextBlock
                     Grid.Column="2"
                     Grid.Row="2"
-                    Text="{Binding Patronymic}"
+                    Text="{Binding Product.Product1}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                            <TextBlock
+                <TextBlock
                     Grid.Column="3"
                     Grid.Row="0"
-                    Text="Должность : "
+                    Text="Дата взятия : "
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                            <TextBlock
+                <TextBlock
                     Grid.Column="3"
                     Grid.Row="1"
-                    Text="Телефон : "
+                    Text="Дата сдачи : "
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                            <TextBlock
+                <TextBlock
                     Grid.Column="3"
                     Grid.Row="2"
-                    Text="Логин : "
+                    Text="Стоимость : "
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                            <TextBlock
+                <TextBlock
                     Grid.Column="4"
                     Grid.Row="0"
-                    Text="{Binding Role.Role1}"
+                    Text="{Binding TimeRent}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                            <TextBlock
+                <TextBlock
                     Grid.Column="4"
                     Grid.Row="1"
-                    Text="{Binding Phone}"
+                    Text="{Binding TimeRentEnd}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                            <TextBlock
+                <TextBlock
                     Grid.Column="4"
                     Grid.Row="2"
-                    Text="{Binding Login}"
+                    Text="{Binding TotalCost}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="16"
                     ></TextBlock>
-                        </Grid>
-                    </Border>
+            </Grid>
+        </Border>
                 </DataTemplate>
-            </ListView.ItemTemplate>-->
-            <ListView.View>
+            </ListView.ItemTemplate>
+            <!--<ListView.View>
                 <GridView>
                     <GridViewColumn Header="Код К." Width="40" DisplayMemberBinding="{Binding IDClient}"/>
                     <GridViewColumn Header="Фамилия клиента" Width="130" DisplayMemberBinding="{Binding Client.SecondName}"/>
@@ -203,8 +204,9 @@
                     <GridViewColumn Header="Оборудование" Width="200" DisplayMemberBinding="{Binding Product.Product1}"/>
                     <GridViewColumn Header="Дата взятия" Width="100" DisplayMemberBinding="{Binding TimeRent}"/>
                     <GridViewColumn Header="Дата сдачи" Width="100" DisplayMemberBinding="{Binding TimeRentEnd}"/>
+                    <GridViewColumn Header="Стоимость" Width="100" DisplayMemberBinding="{Binding TotalCost}"/>
                 </GridView>
-            </ListView.View>
+            </ListView.View>-->
         </ListView>
         <Button x:Name="btnAddEmployee"
                 Grid.Row="3"

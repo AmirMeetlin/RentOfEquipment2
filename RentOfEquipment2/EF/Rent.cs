@@ -21,6 +21,7 @@ namespace RentOfEquipment2.EF
         public System.DateTime TimeRent { get; set; }
         public System.DateTime TimeRentEnd { get; set; }
         public bool IsDeleted { get; set; }
+        public Nullable<decimal> TotalCost { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Employee Employee { get; set; }

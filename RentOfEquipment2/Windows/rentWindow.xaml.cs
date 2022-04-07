@@ -41,6 +41,7 @@ namespace RentOfEquipment2.Windows
             this.Hide();
             addRent.ShowDialog();
             this.Show();
+            lvRent.ItemsSource = ClassHelper.AppData.Conrext.Rent.ToList();
         }
 
     }

@@ -15,6 +15,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -96,7 +97,8 @@
             Grid.Column="1"
             FontSize="25"
             Width="250"
-            Height="40"
+            Height="40" SelectedDateChanged="dpBegin_SelectedDateChanged"
+            
             >
         </DatePicker>
         <DatePicker
@@ -105,18 +107,18 @@
             Grid.Column="1"
             FontSize="25"
             Width="250"
-            Height="40"
+            Height="40" SelectedDateChanged="dpEnd_SelectedDateChanged"
             >
         </DatePicker>
         <Button
             x:Name="btnSend"
-            Grid.Row="6"
+            Grid.Row="7"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             FontSize="25"
             Width="200"
-            Height="40"
+            Height="40" Click="btnSend_Click"
             >
             Отправить
         </Button>
@@ -137,6 +139,25 @@
             Margin="0 0 10 0 "
             >
             Дата сдачи :
+        </TextBlock>
+        <TextBlock
+            FontSize="20"
+            Grid.Row="6"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="0 0 10 0 "
+            >
+            Стоимость(руб.):
+        </TextBlock>
+        <TextBlock
+            FontSize="20"
+            Grid.Row="6"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            x:Name="tbCost"
+            >
+            0,00
         </TextBlock>
     </Grid>
 </Window>
