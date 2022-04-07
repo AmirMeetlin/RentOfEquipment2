@@ -12,6 +12,6 @@ namespace RentOfEquipment2.EF
     }
     public partial class Client
     {
-        public string FIO { get => $"{SecondName}{FirstName}{Patronymic}"; }
+        public string FIO { get => $"{SecondName} {FirstName} {Patronymic}"; }
     }
 }

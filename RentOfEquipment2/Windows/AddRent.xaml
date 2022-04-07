@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentOfEquipment2.Windows"
         mc:Ignorable="d"
-        Title="AddRent" Height="450" Width="400">
+        Title="AddRent" Height="450" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -42,8 +42,9 @@
             Grid.Column="1"
             HorizontalAlignment="Center"
             FontSize="25"
-            Width="200"
-            Height="40"
+            Width="250"
+            Height="40" Click="btnChooseClient_Click"
+            Padding="10 0"
             >
             Выбрать
         </Button>
@@ -62,8 +63,9 @@
             Grid.Column="1"
             HorizontalAlignment="Center"
             FontSize="25"
-            Width="200"
-            Height="40"
+            Width="250"
+            Height="40" Click="btnChooseEmployee_Click"
+            Padding="10 0"
             >
             Выбрать
         </Button>
@@ -82,10 +84,41 @@
             Grid.Column="1"
             HorizontalAlignment="Center"
             FontSize="25"
+            Width="250"
+            Height="40" Click="btnChooseEquipment_Click"
+            Padding="10 0"
+            >
+            Выбрать
+        </Button>
+        <DatePicker
+            x:Name="dpBegin"
+            Grid.Row="4"
+            Grid.Column="1"
+            FontSize="25"
+            Width="250"
+            Height="40"
+            >
+        </DatePicker>
+        <DatePicker
+            x:Name="dpEnd"
+            Grid.Row="5"
+            Grid.Column="1"
+            FontSize="25"
+            Width="250"
+            Height="40"
+            >
+        </DatePicker>
+        <Button
+            x:Name="btnSend"
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            FontSize="25"
             Width="200"
             Height="40"
             >
-            Выбрать
+            Отправить
         </Button>
         <TextBlock
             FontSize="20"

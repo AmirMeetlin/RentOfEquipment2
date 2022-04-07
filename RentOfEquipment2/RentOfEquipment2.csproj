@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="Class1.cs" />
     <Compile Include="ClassHelper\AppData.cs" />
+    <Compile Include="ClassHelper\DataTransmission.cs" />
     <Compile Include="EF\Client.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -123,6 +124,15 @@
     <Compile Include="Windows\AddRent.xaml.cs">
       <DependentUpon>AddRent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ChooseClient.xaml.cs">
+      <DependentUpon>ChooseClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ChooseEmployee.xaml.cs">
+      <DependentUpon>ChooseEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ChooseEquipment.xaml.cs">
+      <DependentUpon>ChooseEquipment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
@@ -158,6 +168,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AuthWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ChooseClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ChooseEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ChooseEquipment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
