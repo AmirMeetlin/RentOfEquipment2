@@ -88,18 +88,40 @@
 <br>
 <br>
 
-<img id="link-employee-new" src="">
+<img id="link-employee-new" src="https://user-images.githubusercontent.com/50911976/163559902-a8d3ace4-d7d5-432a-9128-5a0a30d9dd41.png">
 
 
 <br>
 <br>
 
->вапавпав
+>ошибка добавления работника
 
 <br>
 <br>
 
-<img id="link-" src="">
+<img id="link-employee-new-error" src="https://user-images.githubusercontent.com/50911976/163559968-87ed13c7-2012-44e4-9d03-28caf87c9e0b.png">
+
+
+<br>
+<br>
+
+>успешное добавление работника
+
+<br>
+<br>
+
+<img id="link-employee-new-good" src="https://user-images.githubusercontent.com/50911976/163560091-60e99e8d-9474-4665-a94a-cd181984a1fc.png">
+
+
+<br>
+<br>
+
+>поиск добавленного работника
+
+<br>
+<br>
+
+<img id="link-employee-new-search" src="https://user-images.githubusercontent.com/50911976/163560189-c8fcf38b-dd62-4e0a-86b3-8ad0c0f45d5b.png">
 
 
 
