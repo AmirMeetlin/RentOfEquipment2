@@ -124,6 +124,150 @@
 <img id="link-employee-new-search" src="https://user-images.githubusercontent.com/50911976/163560189-c8fcf38b-dd62-4e0a-86b3-8ad0c0f45d5b.png">
 
 
+<br>
+<br>
+
+>изменение работника
+
+<br>
+<br>
+
+<img id="https://user-images.githubusercontent.com/50911976/163567128-337278cc-0e4b-4926-994c-a44d77d53745.png">
+
+<br>
+<br>
+
+
+
+>окно список клиентов
+
+<br>
+<br>
+
+<img id="link-" src="https://user-images.githubusercontent.com/50911976/163560540-c6423a9b-65c9-4a94-8f73-bf40488e882c.png">
+
+
+<br>
+<br>
+
+>поиск по списку клиентов
+
+<br>
+<br>
+
+<img id="link-" src="https://user-images.githubusercontent.com/50911976/163560884-70f36fe7-c1d7-4887-b942-410acec4e62a.png">
+
+
+<br>
+<br>
+
+>фильтрация клиентов
+
+<br>
+<br>
+
+<img id="link-" src="https://user-images.githubusercontent.com/50911976/163560933-54b4a4fb-cf87-4394-bab7-bd03570d63a3.png">
+
+
+<br>
+<br>
+
+>добавление клиента
+
+<br>
+<br>
+
+<img id="link-" src="https://user-images.githubusercontent.com/50911976/163564308-97d44e2b-2e64-4e62-92a1-559952d710a2.png">
+
+
+<br>
+<br>
+
+>ошибка валидации добавления клиента
+
+<br>
+<br>
+
+<img id="link-" src="https://user-images.githubusercontent.com/50911976/163564455-cd527d2a-729e-4cdc-ab8d-8a323551fbf6.png">
+
+
+<br>
+<br>
+
+>подтверждение добавления клиента
+
+<br>
+<br>
+
+<img id="link-" src="https://user-images.githubusercontent.com/50911976/163565342-899a2adc-f837-4083-9f39-10f97dce8533.png">
+
+
+<br>
+<br>
+
+>клиент успешно добавлен
+
+<br>
+<br>
+
+<img id="link-" src="https://user-images.githubusercontent.com/50911976/163565393-79faff18-7114-47bd-a667-cf9e810f6fbd.png">
+
+
+<br>
+<br>
+
+>редактирование клиента
+
+<br>
+<br>
+
+<img id="link-" src="https://user-images.githubusercontent.com/50911976/163567058-baef6a20-7ef8-4eb1-bbe1-1c04c561c0d3.png">
+
+
+<br>
+<br>
+
+>вапавп
+
+<br>
+<br>
+
+<img id="link-" src="">
+
+
+<br>
+<br>
+
+>вапавп
+
+<br>
+<br>
+
+<img id="link-" src="">
+
+
+<br>
+<br>
+
+>вапавп
+
+<br>
+<br>
+
+<img id="link-" src="">
+
+
+<br>
+<br>
+
+>вапавп
+
+<br>
+<br>
+
+<img id="link-" src="">
+
+
 
 
 
