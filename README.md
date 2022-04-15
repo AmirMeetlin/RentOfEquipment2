@@ -68,7 +68,7 @@
 <br>
 <br>
 
-<img id="link-employee-search" src="https://user-images.githubusercontent.com/81183605/155691558-5f7e2b1a-8f40-4b57-a16f-3bfc77a63c2a.png)">
+<img id="link-employee-search" src="https://user-images.githubusercontent.com/50911976/163559700-64ba92c6-a158-4775-bc13-0f4106e24551.png">
 
 <br>
 <br>
