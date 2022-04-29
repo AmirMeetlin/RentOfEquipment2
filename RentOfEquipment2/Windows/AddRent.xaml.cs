@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static RentOfEquipment2.ClassHelper.DataTransmission;
-
+using LibraryRentOfEquipment;
 
 namespace RentOfEquipment2.Windows
 {
@@ -52,9 +52,10 @@ namespace RentOfEquipment2.Windows
 
             if(dpBegin.SelectedDate!= null && dpEnd.SelectedDate!= null && GetEquipment != null)
             {
-                int NumberOfDayOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
-                int NumberOfDayOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
-                tbCost.Text = (GetEquipment.Cost * (NumberOfDayOfEnd - NumberOfDayOfBegin + 1)).ToString();
+                int DateOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
+                int DateOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
+                decimal Cost = GetEquipment.Cost;
+                tbCost.Text = Calculations.CostOfRent(DateOfBegin,DateOfEnd, Cost).ToString();
             }
             
         }
@@ -85,9 +86,10 @@ namespace RentOfEquipment2.Windows
         {
             if (dpBegin.SelectedDate != null && dpEnd.SelectedDate != null && GetEquipment!=null)
             {
-                int NumberOfDayOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
-                int NumberOfDayOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
-                tbCost.Text = (GetEquipment.Cost * (NumberOfDayOfEnd - NumberOfDayOfBegin + 1)).ToString();
+                int DateOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
+                int DateOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
+                decimal Cost = GetEquipment.Cost;
+                tbCost.Text = Calculations.CostOfRent(DateOfBegin, DateOfEnd, Cost).ToString();
             }
         }
 
@@ -95,9 +97,10 @@ namespace RentOfEquipment2.Windows
         {
             if (dpBegin.SelectedDate != null && dpEnd.SelectedDate != null && GetEquipment != null)
             {
-                int NumberOfDayOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
-                int NumberOfDayOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
-                tbCost.Text = (GetEquipment.Cost * (NumberOfDayOfEnd - NumberOfDayOfBegin + 1)).ToString();
+                int DateOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
+                int DateOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
+                decimal Cost = GetEquipment.Cost;
+                tbCost.Text = Calculations.CostOfRent(DateOfBegin, DateOfEnd, Cost).ToString();
             }
         }
     }
