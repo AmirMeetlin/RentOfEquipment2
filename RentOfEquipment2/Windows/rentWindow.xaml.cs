@@ -85,5 +85,13 @@ namespace RentOfEquipment2.Windows
             Filter();
         }
 
+        private void lvRent_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var rent = lvRent.SelectedItem as EF.Rent;
+            ReturnOfEquipment returnOfEquipment = new ReturnOfEquipment(rent);
+            returnOfEquipment.ShowDialog();
+            Filter();
+        }
+
     }
 }

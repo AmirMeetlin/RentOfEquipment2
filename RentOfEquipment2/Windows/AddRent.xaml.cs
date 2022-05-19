@@ -55,7 +55,7 @@ namespace RentOfEquipment2.Windows
                 int DateOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
                 int DateOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
                 decimal Cost = GetEquipment.Cost;
-                tbCost.Text = Calculations.CostOfRent(DateOfBegin,DateOfEnd, Cost).ToString();
+                tbCost.Text = Calculations.CostOfRent(Calculations.DaysInRent(DateOfBegin,DateOfEnd), Cost).ToString();
             }
             
         }
@@ -89,7 +89,7 @@ namespace RentOfEquipment2.Windows
                 int DateOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
                 int DateOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
                 decimal Cost = GetEquipment.Cost;
-                tbCost.Text = Calculations.CostOfRent(DateOfBegin, DateOfEnd, Cost).ToString();
+                tbCost.Text = Calculations.CostOfRent(Calculations.DaysInRent(DateOfBegin, DateOfEnd), Cost).ToString();
             }
         }
 
@@ -100,7 +100,7 @@ namespace RentOfEquipment2.Windows
                 int DateOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
                 int DateOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
                 decimal Cost = GetEquipment.Cost;
-                tbCost.Text = Calculations.CostOfRent(DateOfBegin, DateOfEnd, Cost).ToString();
+                tbCost.Text = Calculations.CostOfRent(Calculations.DaysInRent(DateOfBegin, DateOfEnd), Cost).ToString();
             }
         }
     }
