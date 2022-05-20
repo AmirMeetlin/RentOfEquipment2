@@ -45,7 +45,7 @@ namespace RentOfEquipment2.Windows
             tbTitle.Text = equipment.Product1;
             tbDescription.Text = equipment.Description;
             tbPrice.Text=Convert.ToString(equipment.Cost);
-            tbWarranty.Text=Convert.ToString(equipment.Warranty);
+            dpWarranty.SelectedDate=equipment.Warranty.Date;
             cbTypeOfProduct.SelectedIndex = equipment.IDTypeProduct-1;
             int status;
             if (equipment.IsRent == false)
@@ -88,7 +88,12 @@ namespace RentOfEquipment2.Windows
                 MessageBox.Show("Поле ЦЕНА не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(tbWarranty.Text))
+            if (int.TryParse(tbPrice.Text, out int i))
+            {
+                MessageBox.Show("Поле ЦЕНА должно содержать числовое значение", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (dpWarranty.SelectedDate==null)
             {
                 MessageBox.Show("Поле ГАРАНТИЯ не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -106,7 +111,7 @@ namespace RentOfEquipment2.Windows
                 editEquipment.Product1 = tbTitle.Text;
                 editEquipment.Description = tbDescription.Text;
                 editEquipment.Cost = Convert.ToDecimal(tbPrice.Text);
-                editEquipment.Warranty = Convert.ToDateTime(tbWarranty.Text);
+                editEquipment.Warranty = Convert.ToDateTime(dpWarranty.SelectedDate);
                 editEquipment.IDTypeProduct = cbTypeOfProduct.SelectedIndex + 1;
                 bool status;
                 if (cbRentStatus.SelectedIndex == 0)
@@ -136,7 +141,7 @@ namespace RentOfEquipment2.Windows
                 product.Product1 = tbTitle.Text;
                 product.Description = tbDescription.Text;
                 product.Cost = Convert.ToDecimal(tbPrice.Text);
-                product.Warranty = Convert.ToDateTime(tbWarranty.Text);
+                product.Warranty = Convert.ToDateTime(dpWarranty.SelectedDate);
                 product.IDTypeProduct = cbTypeOfProduct.SelectedIndex + 1;
                 bool status;
                 if (cbRentStatus.SelectedIndex == 0)
@@ -157,6 +162,13 @@ namespace RentOfEquipment2.Windows
 
             
 
+        }
+
+
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

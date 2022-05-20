@@ -117,6 +117,19 @@
             >
             Повторите пароль :
         </TextBlock>
+        <Button
+            x:Name="btnBack"
+            Content="←"
+            FontSize="20"
+            Width="40"
+            Height="40"           
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin=" 25 0 0 0" Click="btnBack_Click"
+            >
+
+        </Button>
         <TextBox
             Grid.Row="1"
             Grid.Column="1"

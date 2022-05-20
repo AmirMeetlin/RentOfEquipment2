@@ -127,5 +127,10 @@ namespace RentOfEquipment2.Windows
             addClient.ShowDialog();
             Filter();
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

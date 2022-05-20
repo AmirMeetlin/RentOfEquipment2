@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentOfEquipment2.Windows"
         mc:Ignorable="d"
-        Title="AddClient" Height="600" Width="500">
+        Title="AddClient" Height="600" Width="500" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -117,6 +117,19 @@
             >
             Пол :
         </TextBlock>
+        <Button
+            x:Name="btnBack"
+            Content="←"
+            FontSize="20"
+            Width="40"
+            Height="40"           
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin=" 25 0 0 0" Click="btnBack_Click"
+            >
+            
+        </Button>
         <TextBox
             Grid.Row="1"
             Grid.Column="1"
@@ -227,7 +240,7 @@
             Width="200"
             Height="40" Click="btnSend_Click"
             >
-            Отправить
+            Сохранить
         </Button>
     </Grid>
 </Window>

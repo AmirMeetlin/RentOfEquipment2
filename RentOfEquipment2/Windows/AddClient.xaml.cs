@@ -167,6 +167,11 @@ namespace RentOfEquipment2.Windows
                 this.Close();
             }
             
-        }    
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -92,11 +92,6 @@ namespace RentOfEquipment2.Windows
                 MessageBox.Show("Поле ФАМИЛИЯ не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(tbPatronymic.Text))
-            {
-                MessageBox.Show("Поле ОТЧЕСТВО не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
             if (string.IsNullOrWhiteSpace(tbPhone.Text))
             {
                 MessageBox.Show("Поле ТЕЛЕФОН не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -204,11 +199,17 @@ namespace RentOfEquipment2.Windows
         private void btnChoosePhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Files|*.jpg;*.jpeg;*.png;";
             if (openFile.ShowDialog() == true)
             {
                 photoUser.Source = new BitmapImage(new Uri(openFile.FileName));
                 pathPhoto = openFile.FileName;
             }
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

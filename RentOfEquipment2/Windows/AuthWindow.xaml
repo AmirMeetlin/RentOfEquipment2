@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentOfEquipment2.Windows"
         mc:Ignorable="d"
-        Title="AuthWindow" Height="450" Width="300">
+        Title="AuthWindow" Height="450" Width="300" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel>
             <TextBlock

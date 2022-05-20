@@ -31,7 +31,11 @@ namespace RentOfEquipment2.Windows
             ChooseClient chooseClient = new ChooseClient();
             chooseClient.ShowDialog();
             btnChooseClient.FontSize = 15;
-            btnChooseClient.Content = GetClient.FIO;
+            if(GetClient!=null)
+            {
+                btnChooseClient.Content = GetClient.FIO;
+            }
+            
             
         }
 
@@ -41,6 +45,10 @@ namespace RentOfEquipment2.Windows
             chooseEmployee.ShowDialog();
             btnChooseEmployee.FontSize = 15;
             btnChooseEmployee.Content = GetEmployee.FIO;
+            if (GetEmployee != null)
+            {
+                btnChooseEmployee.Content = GetEmployee.FIO;
+            }
         }
 
         private void btnChooseEquipment_Click(object sender, RoutedEventArgs e)
@@ -48,9 +56,12 @@ namespace RentOfEquipment2.Windows
             ChooseEquipment chooseEquipment = new ChooseEquipment();
             chooseEquipment.ShowDialog();
             btnChooseEquipment.FontSize = 15;
-            btnChooseEquipment.Content = GetEquipment.Product1;
+            if (GetEquipment!= null)
+            {
+                btnChooseEquipment.Content = GetEquipment.Product1;
+            }
 
-            if(dpBegin.SelectedDate!= null && dpEnd.SelectedDate!= null && GetEquipment != null)
+            if (dpBegin.SelectedDate!= null && dpEnd.SelectedDate!= null && GetEquipment != null&& GetEmployee != null&& GetClient != null)
             {
                 int DateOfBegin = dpBegin.SelectedDate.Value.DayOfYear;
                 int DateOfEnd = dpEnd.SelectedDate.Value.DayOfYear;
@@ -62,6 +73,31 @@ namespace RentOfEquipment2.Windows
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
+            if (GetClient==null)
+            {
+                MessageBox.Show("Необходимо выбрать КЛИЕНТА", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (GetEmployee == null)
+            {
+                MessageBox.Show("Необходимо выбрать СОТРУДНИКА", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (GetEquipment == null)
+            {
+                MessageBox.Show("Необходимо выбрать ОБОРУДОВАНИЕ", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (dpBegin.SelectedDate == null)
+            {
+                MessageBox.Show("Поле ДАТА НАЧАЛА не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (dpEnd.SelectedDate == null)
+            {
+                MessageBox.Show("Поле ДАТЫ КОНЦА не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var resClick = MessageBox.Show("Добавить запись?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (resClick == MessageBoxResult.No)
@@ -102,6 +138,11 @@ namespace RentOfEquipment2.Windows
                 decimal Cost = GetEquipment.Cost;
                 tbCost.Text = Calculations.CostOfRent(Calculations.DaysInRent(DateOfBegin, DateOfEnd), Cost).ToString();
             }
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

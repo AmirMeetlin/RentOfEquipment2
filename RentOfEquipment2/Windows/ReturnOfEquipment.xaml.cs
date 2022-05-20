@@ -67,8 +67,13 @@ namespace RentOfEquipment2.Windows
             returnRent.IsDeleted = true;
 
             ClassHelper.AppData.Conrext.SaveChanges();
-            MessageBox.Show("Товар сдан в аренду");
+            MessageBox.Show("Товар возвращенv ");
 
+            this.Close();
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }
