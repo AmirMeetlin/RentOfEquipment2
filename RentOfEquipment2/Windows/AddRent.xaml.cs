@@ -30,9 +30,10 @@ namespace RentOfEquipment2.Windows
         {
             ChooseClient chooseClient = new ChooseClient();
             chooseClient.ShowDialog();
-            btnChooseClient.FontSize = 15;
+            
             if(GetClient!=null)
             {
+                btnChooseClient.FontSize = 15;
                 btnChooseClient.Content = GetClient.FIO;
             }
             
@@ -43,10 +44,10 @@ namespace RentOfEquipment2.Windows
         {
             ChooseEmployee chooseEmployee = new ChooseEmployee();
             chooseEmployee.ShowDialog();
-            btnChooseEmployee.FontSize = 15;
-            btnChooseEmployee.Content = GetEmployee.FIO;
+            
             if (GetEmployee != null)
             {
+                btnChooseEmployee.FontSize = 15;
                 btnChooseEmployee.Content = GetEmployee.FIO;
             }
         }
@@ -55,9 +56,10 @@ namespace RentOfEquipment2.Windows
         {
             ChooseEquipment chooseEquipment = new ChooseEquipment();
             chooseEquipment.ShowDialog();
-            btnChooseEquipment.FontSize = 15;
+            
             if (GetEquipment!= null)
             {
+                btnChooseEquipment.FontSize = 15;
                 btnChooseEquipment.Content = GetEquipment.Product1;
             }
 
@@ -143,6 +145,9 @@ namespace RentOfEquipment2.Windows
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            GetClient = null;
+            GetEmployee = null;
+            GetEquipment = null;
         }
     }
 }

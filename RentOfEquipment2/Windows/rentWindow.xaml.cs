@@ -81,7 +81,7 @@ namespace RentOfEquipment2.Windows
             AddRent addRent = new AddRent();
             this.Hide();
             addRent.ShowDialog();
-            this.Show();
+            this.ShowDialog();
             Filter();
         }
 

@@ -31,7 +31,7 @@ namespace RentOfEquipment2
             EmployeeWindow employeeWindow = new EmployeeWindow();
             this.Hide();
             employeeWindow.ShowDialog();
-            this.Show();
+            this.ShowDialog();
         }
 
         private void btnClient_Click(object sender, RoutedEventArgs e)
@@ -39,7 +39,7 @@ namespace RentOfEquipment2
             ListOfClients listOfClients = new ListOfClients();
             this.Hide();
             listOfClients.ShowDialog();
-            this.Show();
+            this.ShowDialog();
         }
 
         private void btnEquipment_Click(object sender, RoutedEventArgs e)
@@ -47,7 +47,7 @@ namespace RentOfEquipment2
             EquipmentList equipmentList = new EquipmentList();
             this.Hide();
             equipmentList.ShowDialog();
-            this.Show();
+            this.ShowDialog();
         }
 
         private void btnRent_Click(object sender, RoutedEventArgs e)
@@ -55,7 +55,11 @@ namespace RentOfEquipment2
             rentWindow rentWindow = new rentWindow();
             this.Hide();
             rentWindow.ShowDialog();
-            this.Show();
+            this.ShowDialog();
+        }
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

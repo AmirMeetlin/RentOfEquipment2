@@ -40,8 +40,9 @@ namespace RentOfEquipment2.Windows
             else if(authUser != null)
             {               
                 MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Close();
+                this.Hide();
+                mainWindow.ShowDialog();
+                this.ShowDialog();
             }
             else
             {

@@ -70,7 +70,10 @@ namespace RentOfEquipment2.Windows
                 e.Handled = true;
             }
         }
-
+        private void tbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsDigit(e.Text, 0));
+        }
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(tbDescription.Text))
@@ -86,11 +89,6 @@ namespace RentOfEquipment2.Windows
             if (string.IsNullOrWhiteSpace(tbPrice.Text))
             {
                 MessageBox.Show("Поле ЦЕНА не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            if (int.TryParse(tbPrice.Text, out int i))
-            {
-                MessageBox.Show("Поле ЦЕНА должно содержать числовое значение", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (dpWarranty.SelectedDate==null)

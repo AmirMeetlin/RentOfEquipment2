@@ -22,8 +22,6 @@ namespace RentOfEquipment2.Windows
 
         bool isEdit = false;
         EF.Client editClient = new EF.Client();
-        string Login;
-        string pathPhoto = null;
         public AddClient()
         {
             InitializeComponent();
@@ -44,7 +42,7 @@ namespace RentOfEquipment2.Windows
             tbSecondName.Text = client.SecondName;
             tbPatronymic.Text = client.Patronymic;
             tbPhone.Text = client.Phone;
-            tbBirthday.Text =Convert.ToString(client.Birthday);
+            dpBirthday.SelectedDate =client.Birthday;
             tbMail.Text = client.Email;
             cbGender.SelectedIndex = client.IDGender - 1;
 
@@ -92,7 +90,7 @@ namespace RentOfEquipment2.Windows
                 MessageBox.Show("Поле ТЕЛЕФОН не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(tbBirthday.Text))
+            if (dpBirthday.SelectedDate==null)
             {
                 MessageBox.Show("Поле ДАТА РОЖДЕНИЯ не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -124,7 +122,7 @@ namespace RentOfEquipment2.Windows
                 editClient.FirstName = tbFirstName.Text;
                 editClient.SecondName = tbSecondName.Text;
                 editClient.Patronymic = tbPatronymic.Text;
-                editClient.Birthday = Convert.ToDateTime(tbBirthday.Text);
+                editClient.Birthday = Convert.ToDateTime(dpBirthday.SelectedDate);
                 editClient.Email = tbMail.Text;
                 editClient.IDGender = cbGender.SelectedIndex + 1;
                 editClient.Phone = tbPhone.Text;
@@ -148,7 +146,7 @@ namespace RentOfEquipment2.Windows
                 newClient.FirstName = tbFirstName.Text;
                 newClient.SecondName = tbSecondName.Text;
                 newClient.Patronymic = tbPatronymic.Text;
-                newClient.Birthday = Convert.ToDateTime(tbBirthday.Text);
+                newClient.Birthday = Convert.ToDateTime(dpBirthday.SelectedDate);
                 newClient.Email = tbMail.Text;
                 newClient.IDGender = cbGender.SelectedIndex + 1;
                 newClient.Phone = tbPhone.Text;

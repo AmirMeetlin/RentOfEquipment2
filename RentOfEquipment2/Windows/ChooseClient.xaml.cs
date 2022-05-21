@@ -87,5 +87,11 @@ namespace RentOfEquipment2.Windows
             GetClient = lvClient.SelectedItem as EF.Client;
             Close();
         }
+        private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            AddClient addClient = new AddClient();
+            addClient.ShowDialog();
+            Filter();
+        }
     }
 }

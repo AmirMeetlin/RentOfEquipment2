@@ -134,6 +134,7 @@
             FontSize="15"
             MaxLength="12"
             x:Name="tbPrice"
+            PreviewTextInput="tbPhone_PreviewTextInput"
             >
         </TextBox>
         <DatePicker
